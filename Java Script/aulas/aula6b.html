@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AULA 6b - RegExp</title>
+		<script type="text/javascript"src="aula6b.js">
+		</script>
+	</head>
+	<body>
+		<h1>ObjetoRegExp</h1>
+	</body>
+</html>
+
+<!--
+Objeto RegExp - Expressão regular, é um objeto que descreve um padrão de caracteres.
+Criação através do operador 'new'
+Padrão de pesquisa será: a palavra Tomas numa determinada string
+
+EXEMPLO:
+var str = "Tomás é o meu nome";
+var regex = new RegExp("Tomás");
+alert(regex.test(str));
+Nota: é case sensitivy
+
+MÉTEDOS:
+test() - testa uma pesquisa numa determinada string, retorna true ou false
+exec() - executa uma pesquisa numa determinada string, retorna um array com a informação obtida
+match() - executa um padrão numa determinada string, retorna um array ou nulo se nada for encontrado
+replace() - executa um padrão numa determinada string, substitui o padrão por um valor
+
+//----------------------------------------------------------------
+Criação pelo literal
+SINTAXE : começa numa barra e termina com barra
+var str = "Tomás é o meu nome";
+var regex = /Tomás/;
+alert(regex.test(str));
+
+//Modificadores de pesquisa
+i - ignora case sensitivy
+g- pesquisa global, isto é até ao final da string de controlo
+Agrupado: gi
+lastIndex - Armazena a pos da ultima ocorrência ou -1 se nada for encontrado
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

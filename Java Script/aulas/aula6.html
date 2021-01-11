@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Aula1</title>
+		<script type="text/javascript"src="aula6.js">
+		</script>
+	</head>
+	<body>
+		<p>
+			<input type="button" value="Atualizar a pagina" onclick="atualizarPagina()"/>
+			<input type="button" value="Retroceder" onclick="retroceder()"/>
+			<input type="button" value="Avançar" onclick="avancar()"/>
+			<input type="button" value="Ir para" onclick="irPara()"/>
+			<input type="button" value="Retroceder 2 níveis" onclick="retroceder2Niveis()"/>
+		</p>
+		<p><b>Contagem</b>
+			<input type="button" value="iniciar contagem" onclick="iContahem()"/>
+			<h1>Contador:<span id="txt"></samp></h1>
+			<h2>Aguardar:<samp id="txt1"></samp></h2>
+		</p>
+		<div>
+			<input type="button" value="Iniciar xxs" onclick="iniciarxxs()"/>
+			<input type="button" value="Cancelar" onclick="cancelar()"/>
+			<input type="button" value="Iniciar Redirecionamento" onclick="iniciarRdirecionamento()"/>
+			<input type="button" value="Cancelar Redirecionamento" onclick="cancelarRedirecionamento()"/>
+		</div>
+		<div>
+			<input id="tempo" type="button" value="Contagem" onclick="contagem(12);"/>
+			<input id="tempoof" type="button" value="Parar contagem"/>
+		</div>
+		<div id="relogio">
+			12:12:12
+		</div>
+		<div>
+			<ul>
+				<li onClick="onClick()">Evento onClick()</li>
+				<li id="refUS">refJS</li>
+				<li>Eu sou preguissoso não faço nada</li>
+			</ul>
+		</div>
+		<!--<script type="text/javascript"src="aula6.js">
+		</script>-->
+		<img id="rodar" alt="roda" />
+	</body>
+</html>
+<!--
+Objeto Function - Funções
+Este objeto é usado para criar pequenos trechos de código em contexto.
+Pode retornar um resultado(denominado com retorno), ou sem retorno(rotina sem retorno).
+
+São usados também para responderem a enventos lançados pelo html(click por exemplo).
+Funções podem receber argumentos de modo a serem processados na rotina.
+
+SINTAXE BASE:
+Função sem retorno:
+function nomeFuncao(){
+}
+Função com retorno:
+function nomeFuncao(){
+	return; 
+}
+Função com retorno de argumentos:
+function nomeFuncao(){
+	return varArgumentos; 
+}
+-------------------------------------------------------------------------
+function nome da funcao(){
+	document.write("Função sem parametros");
+}
+function calcularSoma(){
+	return 10+3;
+}
+document.write("O valor da soma é: "+calcularSoma());
+
+function inprime(txt){
+	document.write(txt+"<br />");
+}
+function multiplicar(x,y){
+	/*var res = x*y;
+	return res;*/
+	//OU
+	return x*y;
+}
+
+-------------------------------------------------------
+Criar uma função através dde um construtor var multiplica1 = new Function("v1","v2","retorn v2*v2;");
+var resultado = multiplica1(3,8);
+--------------------------------------------------------
+Criar atravé da forma literal - sendo mesmo a mais usada uma vez que a integração de manipuladores de eventos é nativa
+var multiplica2 = function(v1,v2){
+	return v1*v2;
+}
+multiplica2(5,8);
+
+*****************************************************************
+
+<ul>
+	<li onClick="onClick()">Evento onClick()</li>
+	<li id="refUS">refJS</li>
+	<li>Eu sou preguissoso não faço nada</li>
+</ul>
+
+function onClick(){
+	alert("Evento de click , através de atributo(onclick) da tag html 'li'");
+}
+*********************************************************************
+NOTA:
+Esta é uma má prática, uma vez que devemos definir os elementos em função da sua declaração(semântica), como tal, devemos ter um ficheiro html com apenas tags html, css com apenas estílos, JS apenas com rotínas.
+*********************************************************************
+Associar o elemento atraves da identificação do mesmo á rotina de execução-
+Para tal usamos o métedo do objeto document:
+SINTAXE:
+document.getElementById()
+EXEMPLO: identificado o li pelo nome = 'refUS'
+document.getElementById("refUS").onclick = function(){
+	alert("Fui referenciado de forma correta");
+}
+//No teste verificamos que retornou um erro, que nada mais é que o momento de leitura do JS.
+Isso acontece: uma vez que o JS é importanto antes da criação da lista.
+
+Possíveis soluções:
+1 - invocar depois da criação da lista.
+2 - Através do objeto window recorrendo ao métedo onload(indica o total carregamento na página)
+SINTAXE:
+window.onload;
+
+************************************************************************
+
+Objeto JS que descreve que descreve o browser, desta forma acedemos ás propriedades e funções do navegador.
+Cuidado, este objeto não é pradonizado pelas normas web(w3s), pode não ser suportado por todos os browsers.
+
+window.onload{
+	métedos do browser
+}
+
+-------------------------------------------------------------------------
+Atualizar a página, usamos o métedo reload()
+function atualizarPagina(){
+	window.location.reload();
+}
+
+<imput type="button" value="Atualizar a página" onclick="atualizarPagina();" />
+
+****************************************************************************
+Objeto screen - informação relativa ao ecrã.
+alert("W: "+screen.width+" H"+screen.height);
+****************************************************************************
+Objeto History - informação referente ao histórico de navegação, herda do objeto window
+
+function retoceder(){
+	window.history.back();
+}
+<imput type="button" value="retroceder" onclick="retroceder();" />
+-----------------------------------------------------------------------------
+function avancar(){
+	window.history.forward();
+}
+<imput type="button" value="avancar" onclick="avancar();" />
+-----------------------------------------------------------------------------
+Avançar ou retroceder vários níveis
+function irpara(){
+	window.history.go(1);
+}
+<imput type="button" value="Ir ara" onclick="irPara();" />
+-------------------------------------------------------------------------------
+Avançar ou retroceder vários níveis
+function voltar2n(){
+	window.history.go(-2);
+}
+<imput type="button" value="Ir ara" onclick="voltar2N();" />
+--------------------------------------------------------------------------------
+********************************************************************************
+Objetos de manipulação temporal
+setTimeout() - executa um determinado código de x em x tempo, retorna um identificador dessa referencia.
+clearTimeout()-cancela um envento lançado pelo setTimeout.
+---------------------------------------------------------------------------------
+<imput type="button" value="iniciar uma contagem" onclick="iContador();" />
+<h1> Contador: <span id="txt"></span></h1>
+
+var c = 10;
+var t;
+function iContador(){
+	document.getElementById('txt').innerHTML = c;
+	c--;
+	t = setTimeout("iContador()",10000); //parametros(function de execução, tempo em ms entre execução)
+}
+-------------------------------------------------------------------------------------
+<input type="button" value="Iniciar xxs" onclick="iniciarxss()"/>
+<input type="button" value="Cancelar" onclick="cancelar()"/>
+
+var t;
+var a,
+function iniciar(){
+	a = prompt("iniciar em qt segundos?");
+	contador();
+}
+function contador(){
+	if(a > 0){
+		document.getElementById('txt').innerHTML = a;
+		a--;
+		t = setTimeout("contador()",1000);
+	}else{
+		alert("Parabéns perdeste algum tempo da tua vida olhando para aqui");
+	}
+}
+function cancelar(){
+	clearTimeout(t);
+	alert("Parabéns já não perdeste tempo da tua vida olhando para aqui, porque foi cancelado");
+}
+-----------------------------------------------------------------------------------
+Redirecionamento
+function redirecionar(){
+	location.replace('http://google.pt');
+}
+function iniciarRdirecionamento(){
+	contadorRedirecionamento();
+}
+var y = 5;
+var t1;
+function contadorRedirecionamento(){
+	document.getElementById('txt'.innerHTML = y);
+	y--;
+	t1 = setTimeout("contadorRedirecionamento()",1000);
+	if(y == 0){
+		redirecionar();
+	}
+}
+function cancelarRedirecionamento(){
+	if(t1 !== null){
+		clearTimeout(t1);
+		y=5;
+		alert("Já não sais desta página");
+	}
+}
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

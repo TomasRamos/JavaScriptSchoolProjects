@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AULA 9 - DOM CORE API</title>
+		<script type="text/javascript"src="aula9.js">
+		</script>
+	</head>
+	<body>
+		<p id="intro">Parágrafo...</p>
+		<h3>Cabeçalho h3</h3>
+		<div>
+			<ul>
+				<li id="item1">item 1</li>
+				<li id="item2">item 2</li>
+				<li id="item3">item 3
+					<ul>Antes
+						<li id="item31">item31</li>
+						Depois
+						<li id="item32">item32</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<span>Div 2</span>
+		</div>
+	</body>
+</html>
+
+<!--
+DOM CORE API
+Toda a manipulação é baseada no XML, logo é independente da linguagem de programação.
+
+A navegação pela nossa página:
+Cada tag html representa um nó da árvore.
+"Nós" princípais:
+Documento - representa o documento
+Elemento - representa as tags(ex: body, div)
+Atributo - atríbutos dos elementos
+Texto - representa o texto contido nas nossas tags(ex: <h3>Texto do elemento>/h3>)
+
+Leitura da árvore:
+de elementos "nós" podem ser país, filhos ou irmãos de outros "nós".
+Na nossa árvore o document tem como filhos o body e o head.
+O elemento p e h3 são filhos de body, sendo body o seu pai, desta forma p e h3 são irmãos.
+------------------------------------------------------------------------------------------
+Para navegar é preciso identificar o parentesco dos nós:
+Pai = parent;
+Filho = child;
+Irmão = sibling;
+
+-----------------------------------------------------------------------------------------
+Acessos através das propriedades.:
+Node.childNodes: Para aceder a todos os nós filhos diretos de um determinado elemento.
+Node.FirstChild: este é o mesmo que aceder ao primeiro item da 'childNodes', isto é array(Element.childNodes[0])
+Nodes.lastChild: este é o mesmo que aceder ao último item da 'childNodes', isto é array(Element-childNodes[length-1])
+Node.parentNode: dá acesso ao pai atual, para aceder ao avô usariamos "Node.parentNode.parentNode"
+Node.nextSibling: acesso ao nó seguinte no mesmo nível dentro da árvore DOM.
+Node.previousSibling: acesso ao último nó do mesmo nível dentro da árvore DOM.
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

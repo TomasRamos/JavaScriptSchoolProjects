@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Aula5</title>
+		<script type="text/javascript"src="aula5.js">
+		</script>
+	</head>
+	<body>
+		<p>Texto: Tomás</p>
+	</body>
+</html>
+
+<!--
+OBJETOS	
+---------------------------------------
+Como já dito anteriormente existem tipos primitivos no JS(boolean,number,string).Significa que o valor por eles contido é o que realmente representa.
+Existem alguns objetos como por exemplo Object, Number, Boolean, String, Array, DAte, Math, RegExp, Funnction, Error, etc.
+Todos os objetos heradam(ou são nativos) do objeto "Object".
+E os objetos são todos arrays.
+******************************************************
+NOTA:Letras mínusculas representam os típos primitivos, ma+iusculas representa o Objeto;
+******************************************************
+Por exemplo o objeto Number tem atributos e métedos(funções), já o tipo Number(primitivo) apenas representa um valor numérico
+EXEMPLO:
+var idade = 50;
+alert(typeof(idade)); //number, uma vez que representa o valor numérico(tipo nativo).
+EXEMPLO:
+var numero = 123;
+alert(numero.length): //desta forma representamos o objeto Number, como tal, temos acesso aos atributos e métedos da classe(objeto).
+EXEMPLO:
+var str = "Tomás";
+//new String(str).length;// é o JS que executa esta rotina.
+alert(str.length);
+alert(new String(str).length);
+Desta forma o processamento do JS seria afetado, porque teria que instanciar um objeto do tipo String, para desta forma aceder ao métedo length().
+SOLUÇÃO:
+var nome = new String("Tomás");
+---------------------------------------------------------
+Objeto Boolean - este objeto encapsula o tipo primitivo boolean(true,false)
+EXEMPLO:
+var v = true;
+alert(v);
+alert(typeof(v)); //vemos que invocara o tipo primitivo
+Creiar o objeto pelo tipo primitivo
+var v = new Boolean(true);
+alert(typeof(v)); //object
+EXEMPLO:
+var valor_test = 0;
+var valor_test = new Boolean(valor_test);
+----------------------------------------------------------
+instanceof - Verificar o tipo que instanciou o objeto
+alert(v instanceof Boolean);
+----------------------------------------------------------
+Construtores do objeto Boolean:
+Omissão, por padrão é falso
+var v = new Boolean(); //false
+Por atribuição
+var v = new Boolean(0); //false
+var v = new Boolean(1); //true
+-----------------------------------------------------------
+Sendo um objeto herda os métedos do objeto Object, por exemplo temos acesso ao métedo valueOf().
+valueOf() - retorna o valor contido no objetos como valor primitivo.
+EXEMPLO:
+alert(v.valueOf());
+alert(v.toString());
+alert(typeOf(v.toString()));
+**************************************************************
+Objeto Number(funções herdadas: toString(); valueOf()).
+EXEMPLO:
+var num = 1;
+alert(num);
+alert(typeOf(num));
+Alterar por conversão para objeto.
+var num1 = new Number(1.10);
+alert(typeOf(num1));
+---------------------------------------------------------
+Tipo de instâncias do objeto Number()
+Construtor por cópia, omissão e atribuição.
+var n1 = new Number("Tomás");
+alert(n1); //vale NaN(Not a Number) - não é um valor numérioco.
+valor n2 = new Number("200");
+alert(n2); //vale o valor contido na string, caso seja possível a conversão de tipo.
+var n3 = new Number(12233325);
+alert(n3); //vale o valor contido no objeto number(12233325);
+var n4 = new Number(false);
+alert(n4); //conversão do tipo caso possível, neste caso devolverá(0);
+var n5 = new Number(true);
+alert(n5); //conversão do tipo caso possível, neste caso devolverá(1);
+var n6 = new Number(12);
+var n7 = new Number(n6);
+alert(n6);
+alert(n7);
+-----------------------------------------------------------
+Constantes do tipo NumberNaN - não é um valor numérico MAX_VALUE e MIN_VALUE -o valor máximo e mínimo valor que se pode representar em JS.
+NEGATIVE_INFINITY e POSITIVE_INFINITY - Representa os valores, negativos e positivos, a partir do max possível(infinito);
+alert("Propriedade: NaN"+Number.NaN);
+alert("Propriedade: MAX_VALUE"+Number.MAX_VALUE);
+alert("Propriedade: MIN_VALUE"+Number.MIN_VALUE);
+alert("Propriedade: NEGATIVE_INFINITY"+Number.NEGATIVE_INFINITY);
+alert("Propriedade: POSITIVE_INFINITY"+Number.POSITIVE_INFINITY);
+-------------------------------------------------------------
+Métedos
+hasOwnProperty() - Retorna um valor Boolean que indica se o objeto instanciado tem uma proprieadade com o nome específicado.
+toExponential() - Retorna a string que contem o número representado pela notação exponencial.
+toFixed() - Retorna uma string com o número em notação décimal(sem casa décimais) ou ponto fixo.
+toPrecision() - Retorna uma string que contém o número que é representado com a parte decimal.
+toString() - Retorna uma representação da sequência de caracteres de um objeto.
+EXEMPLO:
+var numero = new Number("20.21424");
+alert(numero.toFixed());
+alert(numero.toFixed(3));
+alert(numero.toPrecision);
+alert(numero.toPrecision(1));
+alert(numero.toString(1));
+***************************************************************
+Objeto String()
+O objeto String do JS permíte manipular e alterar sequências de caracteres.
+Propriedades:
+length - Retorna o tamanho da String em formato numérico.
+prototype - Usado para adicionar propriedades e métedos que serão refletidos em todas as instâncias do Objeto String.
+métedos:
+anchor(name)-Retorna a String com a tag <A name="name"> 
+charAt(x)-Retorna o character da posicao "x" dentro da string.
+charCodeAt(x)-Retorna o valor Unicode do caractere na posicao “x" dentro da string.
+concat(v1, v2,...)-Combina uma ou mais strings (argumentos v1, v2 etc) dentro de outra sem modificar a string original.
+indexOf(substr, [start])-Procura e se encontrar retorna o indice do caractere procurado. Se não for encontrado nada, -1 será retornado. "Start" até um argumento opcional que especifica a posição inicial dentro da string que será feita a pesquisa. O valor padrão até 0.
+match(regexp)-Executa uma pesquisa para um determinado comparação de dados baseado em expressões regulares. Se encontrado retorna true. Caso contrário retorna nulo.
+replace( regexp, replacetext)-Substitui algumas partes do texto baseado em camparações de dados utilizando expressões regulares.
+search(regexp)-Retorna o índice da pesquisa em uma String. Se não encontrado, retornar –1.
+substring(from, [to])-Retorna os caracteres em uma string entre os valores de "from" indo ate “to”.
+toLowerCase()-Retorna a string convertida em minúsculas.
+toUpperCase()-Retorna a string convertida em maiúsculas.
+EXEMPLO:
+var exemplo = "JavaScript";
+document.write("Texto escrito com o métedo big -> "+exemplo.big() + "<br />");
+document.write("Texto escrito com o métedo bold -> "+exemplo.bold() + "<br />");
+document.write("Texto escrito com o métedo italics -> "+exemplo.italics() + "<br />");
+document.write("Texto escrito com o métedo small -> "+exemplo.small() + "<br />");
+document.write("Texto escrito com o métedo strike -> "+exemplo.strike() + "<br />");
+document.write("Texto escrito com o métedo sup -> "+exemplo.sup() + "<br />");
+document.write("Texto escrito com o métedo sub -> "+exemplo.sub() + "<br />");
+document.write("Texto escrito com o métedo toLowerCase -> "+exemplo.toLowerCase() + "<br />");
+document.write("Texto escrito com o métedo toUpperCase -> "+exemplo.toUpperCase() + "<br />");
+document.write("Texto escrito com o métedo substring(0,4) -> "+exemplo.substring(0,4) + "<br />");
+document.write("Texto escrito com o métedo substring(4) -> "+exemplo.substring(4) + "<br />");
+document.write("Texto escrito com o métedo substring(4,2) -> "+exemplo.substring(4,2) + "<br />");
+document.write("Texto escrito com o métedo substring(2,4) -> "+exemplo.substring(2,4) + "<br />");
+var str = "Tomás";
+document.write("Texto escrito com o métedo chsrAt(str.length - 1) -> "+str.charAt(str.length - 1) + "<br />");
+document.write("Texto escrito com o métedo chsrAt(3) -> "+str.charAt(3) + "<br />");
+*****************************************************************
+Objeto Array - conjunto(coleção) de dados líteral
+SINTAXE:
+Array();
+var numeros = new Array(); //construtor por omissão(sem dimensionamento).
+var nível = new Array("nível 1","nível 2","nível 3"); //construtor por atribuição
+var turma = new Array(3); //construtor por dimensionamento
+OUTROS EXEMPLOS DE CREIAÇÃO
+turma[0] = "prog";
+turma[1] = "informática";
+turma[2] = "saude";
+//OU
+var option = ["get","post","head","options"]; //forma líteral ou primitiva
+--------------------------------------------------------
+Métedos:
+join(separacao) - junta sequencialmente os elementos de um array usando o caractere(ou caracteres) dados por separação.
+Por omissão de separação é usada a vírgula por default.
+EXEMPLO:
+var nível = new Array("baixo","media","alto");
+var str_1 = nivel.join(); //res: "baixo,medio,alto"
+var str_2 = nivel.join(", "); //res: "baixo, medio, alto"
+var str_3 = nivel.join("/"); //res: "baixo/medio/alto"
+---------------------------------------------------
+length - Indica o número de elementos de um determinado array. Em casos externos pode ser usado para diminuir a quantidade de elementos do array.
+EXEMPLO:
+var nivel = new Array("baixo","medio","alto");
+alert(nivel.length);
+Forçar o dimensionamento
+nivel.length = 3;
+---------------------------------------------------
+pop() - Remove e retorna  o último elemento de um determinado array, reduzindo o tamanho.
+EXEMPLO:
+var nivel = new Array("baixo","medio","alto","muito alto");
+var eliminado = nivel.pop(); //vai eliminar o valor "muito alto".
+---------------------------------------------------
+push() - adicionar um ou mais elementos (valor1,valor2,valorn), no final dum array, retornado o novo tamanho
+EXEMPLO:
+var nivel = new Array("baixo","medio","alto","muito alto");
+var novo = nivel.push("mais 1","mais 2","mais 3");
+---------------------------------------------------
+reverse() - Inverte a ordem dos elementos
+EXEMPLO:
+var nivel = new Array("baixo","medio","alto","muito alto");
+nivel.reverse(); //nivel[0] = "muito alto"; nivel[1] = "alto"; nivel[2] = "medio"; nivel [3] = "baixo"
+---------------------------------------------------
+shift() - Remove o primeiro elemento de dum array, retorna esse elemento
+EXEMPLO:
+var nivel = new Array("baixo","medio","alto","muito alto");
+removida = nivel.shift();//baixo;
+----------------------------------------------------
+toString() - Retorna uma string com os elementos dispostos sequencialmente e separados por vírgula
+EXEMPLO:
+var num = new Array("10","20","30","40","50");
+var str = num.toString(); //str vai conter = "10,20,30,40"
+-----------------------------------------------------
+*****************************************************
+Objeto Date - objeto que permite manipular uma data
+Este objeto irá manipular a data de sistem(A data atual do sistema que role o JS no momento da execução do script, isto é, a data do SO da máquina que execute o navegador).
+SINTAXE:
+var nomeDate = new Date();
+//A data de sistema é em função do dia padrão: este dia é 01/01/1970
+EXEMPLO:
+var data = new Date(); //construtor por omissão
+document.write("Data:"+data);
+
+var n1Data = new Date(1315151); //construtor por atribuição simples, calcula em função de 01/01/1970
+
+---------------------------------------------------
+Construtor por atribuição simples e cadeia de caractéres(string)
+var dataString = new Date("Jan-01-2001 12:12:12");
+OU
+Date(year,month,day,hours,minutes,seconds,milliseconds);
+var Date = new Date(2017,02,12,14,15,30,2000);
+//EXEMPLOvar hoje = new Date();
+var h = hoje.getHours();
+var m = hoje.getMinutes();
+var s = hoje.getSeconds();
+document.write("Hora: "++":"+h+":"+m+":"+s);
+-------------------------------------------------------------------------
+//Capturar o dia da semana:getDay()
+var dias_semana = ["d","seg","ter","qua","quint","sex","sab"];
+var hoje = new Date();
+document.write("Dia da Semana: "+dias_semana[hoje]);
+------------------------------------------------------------------------
+var hoje = new Date();
+document.write("Data por forma aninhada: "+hoje.toLocateDateString());//25/01/2018
+*************************************************************************
+Objeto Math - Manipulação de operações matemáticas, não tem construtor este objeto
+
+As prop. usadas pelo objeto, são constantes matemáticas
+EXEMPLO:
+var pi = Math.PI;
+alert(pi);
+//Métedos
+abs(x) = Retorna o valor absoluto de x ->
+Math.abs(-7.25) : R:7
+ceil(x) - Devolve x, arredondando para cima, isto é, para o inteiro mais próximo Math.ceil(1.4); : R:2
+floor(x) - Retorna o valor arredondado para baixo;
+pow(x,y) - Retorna o valor de x elevado a y;
+random() - Retorna um valor aleatório entre 0 e 1 : Math.random();
+round(x) - Arredonda x para o inteiro mais próximo, pela ordem matemática: Math.round(2.60)
+EXEMPLOS:
+var pi = Math.PI;
+var absN = Math.abs(-5.16);
+var absoP = Math.abs(5.16);
+var teto = Math.ceil(1.4);
+var chao = Math.floor(1.6);
+var potencia = Math-por(3,4);
+var aleatorio = Math.random(); //varia entre 0 e 1;
+var n = aleatorio.toFixed(2); //Cast para o Objeto Number
+var aleatorio10 = Math.random()*10; //entre 0 e 9;
+var exemplo = Math.floor(Math.random()*10)+1; //1 e 10
+var arred = Math.round(1.80);
+var arred1 = Math.round(1.3);
+
+document.write("PI: "+pi+"<br />");
+document.write("absN: "+absN+"<br />");
+document.write("absoP: "+absoP+"<br />");
+document.write("teto: "+teto+"<br />");
+document.write("chao: "+chao+"<br />");
+document.write("potencia: "+potencia+"<br />");
+document.write("aleatorio: "+aleatorio+"<br />");
+document.write("n: "+n+"<br />");
+document.write("aleatorio10: "+aleatorio10+"<br />");
+document.write("exemplo: "+exemplo+"<br />");
+document.write("arred: "+arred+"<br />");
+document.write("arred1: "+arred1+"<br />");
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

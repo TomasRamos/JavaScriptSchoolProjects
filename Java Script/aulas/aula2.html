@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AULA 2 - JS</title>
+		<script type="text/javascript" src="./aula2.js">
+		</script>
+	</head>
+	<body onload="alert('Página carregada');">
+		<p>Nome:Tomás</p>
+		<img id="cristovão" src="./img.jpg" alt ="my dog" onclick="alert('Imagem clicada')"/>
+	</body>
+</html>
+<!--
+Elementos
+Em linguagem orientada a objetos é comum a manipulação de eventos, isto é, qlq reação ou acção que executará um procedimento.
+Normalmente ocorre por ato despoltado(execução) pelo cliente(utilizador do site), por exemplo: clicar num botão, selecionar um objeto, pressiona  uma tecla, etc.
+Por exemplo:
+Add o evento de leitura ou carregamento da página , normalmente ocorre quando o body é totalmente carregado.
+<body onload="alert('Página carregada');">
+Explicação:
+Após carregar totalmente a página é invocado o objeto window que executa a acção de alert().
+-------------------------------------------
+Add o event de click, neste caso sobre a img
+Exemplo: onclick="alert('Imagem clicada')"
+-------------------------------------------
+Comentários:
+//comentário em linha
+/**/multi-linha
+-------------------------------------------
+Variáveis:
+Criação: A variável só pode começar por caracteres letras(A-Z ou a-z), _, $ mais nenhum caractéres
+IMPORTANTE: Case sensitive(), não podemos intanciar nomes reservados, new()palavra reservada), _new
+Eemplo prático de atribuição multi-valor
+var campo_1 = campo_2 = campo_3 = 12;
+
+/*DINAMIZAÇÃO DAS VARIÁVEIS*/
+O JS é uma linguagem de tipagem dinâmica, isto é, não é necessário específicar o tipo de dados duma variável aquando da sua declaração. Os tipos são automáticamente convertidos conforme a atribuição.
+----------------------------------------------
+Variáveis inteiras(INTEGER) ou Number
+Representam numeros positivos, negativos ou fráccionários
+Exemplo:
+var a = 14;
+var b = -12;
+var c = 30.5;
+Ponto flutoante(notação científica)
+Este literal, também conhecido como notação científicarepresentamos:
+var nc = 2.34e4; //2.34 é multiplicado por dez á quarta potência(10^4((10*10)*10)*10): ou 2.34*10000
+----------------------------------------------------------------
+BOOLEAN
+
+true ou 1;
+Exemplo:
+false ou false;
+var b = true;
+	b = false;
+	b = 12;
+-----------------------------------------------------------------
+STRING
+
+Este literal representa qlq cadeia de caracteres envolvidos por aspa"" ou apóstrofo ''.
+Exemplo:
+var str = "Tomás";
+	str = ""; //vazio
+	var str; //null
+SENDO n+umeros, acontece que a conversão é feita de forma automática.
+Exemplo:
+var v = "12";
+<>
+var v_1 = 12;
+-------------------------------------------------------------------
+CARACTERES ESPECIAIS
+
+Caracteres específicos para serem interpretados dentro de uma String.
+Exemplo:
+\n -> quebra de linha
+\t -> tabulação
+\\ -> barra invertida
+-------------------------------------------------------------------
+INCREMENTO e DECREMENTO
+SINTAXE:
+	variável++ ou ++variável;
+	variável-- ou -- variável;
+RELAÇÃO DOS OPERADORES(sobrecarga dos operadores)
+	+;-;*;/;
+Exemplo:
+	var x = 12;
+		x += 4; //x = x + 4;
+		x++ // x+=1 ou x + 1;
+------------------------------------------------------------
+Operadores Relacionais
+Estes operadores comparam o conteudo sos operadores e retornam um valor boolean(true ou false), em função do resultado da comparação.
+EXEMPLO:
+> -> maior
+< -> menor
+>= -> maior ou igual
+<= -> menor ou igual
+== -> igualdade
+!= -> diferente
+var res = (1 == 2);
+alert ("Res->" + res);
+alert ("Res->" + (1 == 2));
+---------------------------------------------------------------
+OPERADORES LÓGICOS
+Para estes operadores, são wxigidos valores booleanos, como operandos, retorna um valor lógico.
+&& ou AND(e) -> verdade se todas as expressões forem verdade
+TABELA
+V V = V
+V F = F
+F V = F
+F F = F
+Três Expressões
+V V V = V
+V F V = V
+F V V = F
+F F V = F
+F F F = F
+|| ou OR(ou) -> verdade se uma das expressões for verdade
+TABELA
+V V = V
+V F = V
+F V = V
+F F = F
+Três Expressões
+V V V = V
+V F V = V
+F V V = V
+F F V = V
+F F F = F
+! ou NOT(negação) -> nega a expressão, se for verdade torna mentira
+V -> F
+F -> V
+Exemplo:
+var x = 1;
+alert((x >= 2) && (x <= 1));
+		F			V	= F
+alert((x >= 2) || (x <= 1));
+		F			V	= V
+var z = 2;
+alert(!(z>=2));
+		V	=	F
+-------------------------------------------------------------------------
+OPERADOR DE CONCATENAÇÃO DE STRING
+Usamos o caracter '+' para concatenar cadeias de caracteres(strings)
+var x = "Tomás";
+var y = "Ramos";
+var z = x +""+ y; //Tomás Ramos
+
+var a = "Idade:";
+var idade = 56;
+var aidade = a+idade; //Idade:56
+--------------------------------------------------------------------
+OPERADOR TERNÁRIO
+SINTAXE:
+(Expressâo)? vardade : falso;
+
+EXEMPLO:
+var num = 1;
+var test = ((num == 1)? "Igual" : "Diferente");
+alert(test);
+
+VÁRIOS TERNÁRIOS
+var teste1 = ((num == 1) ? "igual" : (num == 2) ? "igual a 2" : "Diferente");
+alert(teste1);
+
+Variaveis var inicializadas na mesma atribuição
+var num = 1,nome = "Tomás", morada = "Casa";
+-------------------------------------------------------------------------
+Valor que numca se altera no processamento da app.
+Por norma, devemos aplicar maíuscilas a constante de mode a facilmente identificarmos.
+SINTAXE:
+const nome = valor_constante;
+EXEMPLO:
+const SEMANA = 7;
+alert(SEMANA);
+---------------------------------------------------------------------------
+Receber mensagens via caixa de texto input
+var rec = prompt("Minha mensagem","Insira aqui o texto");
+alert("o texto digitado foi: " + rec);
+****************************************************************************
+Modos de leitura da rotina Javascript
+INLINE
+<body onload="alert('página carregada');">
+----------------------------------------------------------------------------
+INCORPORADA
+<script type="text/javascript">
+	var x = 12;
+	alert(x);
+</script>
+-----------------------------------------------------------------------------~
+EXTERNO
+<script type="text/javascript">
+	src="./sj/aula1.js">
+</script>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

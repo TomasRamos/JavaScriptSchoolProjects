@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset = "UTF-8">
+		<title>AULA 8 - DOM</title>
+		<script type="text/javascript" src = "./aula8.js"></script>
+	</head>
+	<body>
+		<p id="intro" title="title">Parágrafo</p>
+		<p class="intro2">Parágrafo2</p>
+		<h3>Cabeçalho de nivel 3</h3>
+		<ul>
+			<li>Lista1:Item1</li>
+			<li>Lista1Item2</li>
+			<li>Lista1Item3</li>
+			<li>Lista1Item4</li>
+			<li>Lista1Item5</li>
+		</ul>
+		<ul>
+			<li>Lista2:Item1</li>
+			<li>Lista2Item2</li>
+		</ul>
+		<img src="./imagem/1.jpg" alt="epcc">
+		<img src="./imagem/2.jpg" alt="epcc2">
+		<img src="./imagem/3.png" alt="epcc3">
+		<a href="#">link1</a>
+		<a href="#">link2</a>
+		<a href="#">link3</a>
+		<a href="#">link4</a>
+		<form action="#" method="get">
+			<fieldset>
+				<legend>Dados pessoais:</legend>
+				<label for="email">Email:</label>
+				<input type="text" id="email" readonly="readonly" value="email"><br>
+				<label for="senha">Senha:</label>
+				<input type="password" id="senha"><br>
+				Sexo:<br>
+				M<input type="radio" name="sexo" value="M" tabindex="2"/>
+				F<input type="radio" name="sexo" value="F" checked="checked" tabindex="2"/>
+			</fieldset>
+			A tua casa tem:<br>
+			<input type="checkbox" name="casa" value="quarto"/>tem quarto<br>
+			<input type="checkbox" name="casa" value="sala"/>tem sala<br>
+			<input type="checkbox" name="casa" value="wc"/>tem wc<br>
+			Seleciono a foto:
+			<input type="file" id="foto"/><br>
+			Indique quantos irmão tem:
+			<select id="irmaos">
+				<option>0</option>
+				<option>1</option>
+				<option selected="selected">2</option>
+				<option>3</option>
+			</select>
+			<br>
+			Solteiro ou casado:<br>
+			<select id="solcas">
+				<optgroup label="Solteiro">
+					<option>Solteiro 0 filhos</option>
+					<option>Solteiro 1 filhos</option>
+					<option>Solteiro 2 filhos</option>
+				</optgroup>
+				<optgroup label="Casado">
+					<option selected="selected">Casado 0 filhos</option>
+					<option>Casado 1 filhos</option>
+					<option>Casado 2 filhos</option>
+				</optgroup>
+			</select>
+			Comentario: <br>
+			<textarea cols="60" rows="10" tabindex="1">
+			Escreva o comentario aqui!!!!
+			</textarea>
+			<input type="hidden" id="info_vital" value="secreto" />
+			<input type="reset" value="limpar dados"/>
+			<input type="submit" value="Enviar"/>
+		</form>
+		<table id= "tabela" border="1">
+			<tr>
+				<td>Celula 1</td>
+				<td>Celula 2</td>
+			</tr>
+			<tr>
+				<td>Celula 3</td>
+				<td>Celula 4</td>
+			</tr>
+		</table>
+		<input type="button" value="Nova linha" id= "btn_new" />
+		<input type="button" value="Elimina linha" id= "btn_del" />
+	</body>
+</html>
+<!--
+O Document Object Model (DOM), é a API(Interface de Programão de Aplicações), através da qual o JS interage com o conteudo de um html(baseado no xml ou xhtml).O JS E Dom normalmento são vistos como uma única entidade.usamos a API DOM para aceder,manipular ou percorre um documento escto em XML ou suas variações(html,xhtml,html5).
+Aceder ao nosso paragrafo identificado com intro,usando o método DM:
+var intro = documento.getElementByid("intro");
+Aceder ao nosso paragrafo identificado com intro, usando o metodo DM:
+var intro =document.getElementById("intro");
+O 'getElementByTagName' método que retorna uma colecao de nos.é semelhantet a uma matriz em que tem como prop.um comprimento.
+NOTA:
+Uma ve que JS é dinamico a colecao de nos esta."ao viva",se add um novo elemento para o DOM,a colecao sera atualizada em tempo de execuacao.
+
+Uma vez que todos os elemt«entos em js sao objetos qye por sua vez herda comportamenro da objeto arrau,podemos aceder ao elementos como se de um array sse trate.
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

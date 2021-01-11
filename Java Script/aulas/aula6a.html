@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AULA 6a - JS</title>
+		<script type="text/javascript"src="aula6a.js">
+		</script>
+	</head>
+	<body>
+		<h1>Programador</h1>
+	</body>
+</html>
+<!--
+O JS é distinto na criação de objetos próprios(em relação a linguagens como Java ou c++ por exemplo), uma vez que não possui uma definição formal da classe.
+No entanto possui o seu próprio tipo de herança baseado em protótipos.
+---------------------------------------------------------------------------
+Função construtora e atributos(propriedades) - Classes e atríbutos.
+
+NOTA: A palavra reservada this: responsável por iniciar o objeto
+
+EXEMPLO:
+function Carro(velMax){
+	this.velocidadeMax = velMax;
+	this.ligado 	   = false;
+}
+**************************************************************************
+Criar um objeto, isto é, instanciar a classe, para tal usamos o operador nativo de instanciação 'new'.
+SINTAXE:
+var nomeObjeto = new Objeto();
+
+EXEMPLO:
+var carro = new Carro(350);
+***************************************************************************
+Acesso aos atributos da classe o acesso ás propriedades do objeto criado é feito usando o operador '.'.
+SINTAXE:
+variável Objeto.nomeAtributo;
+
+EXEMPLO:
+document.write(carro.velocidadeMax);
+****************************************************************************
+Atributos em tempo de execução
+O JS permite criar atributos em tempo de execução(mesmo depois do objeto ser criado).
+
+SINTAXE:
+variavelObjeto.novoAtributo = valorAtributo;
+
+EXEMPLO:
+carro.cor = azul;
+*****************************************************************************
+Métedos em JS são funções invocadas pelos objeto, deste modo criar um novo métedo para o objeto é simplesmente invocar o operador '.' como acontece em relação aos atributos.
+------------------------------------------------------------------------------
+Criado pela propriedade prototype(só pode ser executado pelo modelo)
+------------------------------------------------------------------------------
+function liga(){
+	this.ligado = true;
+}
+Carro.prototype.ligar = liga;
+-------------------------------------------------------------------------------
+Adicionar ao objeto em partícular.
+var carro2 = new Carro(123);
+carro2.ligar = liga;
+-------------------------------------------------------------------------------
+Na própria estrutura da classe
+function liga(){
+	this.ligado = true;
+}
+function Mota(velMax){
+	this.velocidadeMax = velMax;
+	this.ligado = false;
+	this.ligar = liga;
+}
+
+NOTA: THIS é substituido pelo objeto que invoca a função.
+EXEMPLO:
+var nota = new Mota(45);
+document.write(mota.ligado); //falso
+mota.ligar(); //atributo ligado para true
+document.write(mota.ligado); //true
+*************************************************************************************
+literal do objeto - Definido pela declaração de uma lista de pares CHAVE:VALOR
+
+SINTAXE:
+var Objeto = {
+				nomeAtributo1:valorAtributo1,
+				nomeAtributo2:valorAtributo2,
+				nomeAtributo3:valorAtributo3,
+				grupoAtributo:{
+								nomeAtributo11:ValorAtributo11,
+								nomeAtributo12:valorAtributo12
+							  },
+				grupoAtributo2:{
+								nomeAtributo21:ValorAtributo21,
+								nomeAtributo22:valorAtributo22,
+								nomeAtributo23:ValorAtributo23
+							   }
+			 };
+EXEMPLO:
+
+var Familia = {
+					nomeFamilia:"Ramos",
+					qtAgregados:3,
+					vencimentoAgregado:1000,
+					filho1:{
+								nomeFilho:"Tomás",
+								idadeFilho:18
+						   },
+					filho2:{
+								nomeFilho:"Madalena",
+								idadeFilho:11
+						   },
+					avo:{
+							nomeAvo:"Diolinda",
+							idadeAvo:78
+						}
+			  };
+document.write("<br />" + Familia.nomeFamilia + "tem no agregado" + Familia.qtAgregado + "elementos" + Familia.vencimentoAgregado + "€, o primeiro filho chama-se " + Familia.filho1.nomeFilho + "e tem "+Familia.filho1.idadeFilho + " anos");
+************************************************************************************
+Composição dos objetos.Ó objeto tem na sua composição outros objetos para formar a estrutura.
+
+EXEMPLO:
+function Familia(nome,ven){
+	this.nome = nome;
+	this.vencimento = ven;
+}
+function Filho(n,i){
+	this.nome = n;
+	this.idade = i;
+}
+
+var familia = new Familia("Ramos",1000);
+var familia2 = new Familia("Nunes",10000);
+var f1 = new Filho("Tomás",16);
+var f2 = new Filho("Madalena",11);
+
+familia.filho1 = f1;
+familia.filho2 = f2;
+familia2.filho1 = f2;
+
+document.write("<br />" + familia.nome + "vivem com "+ familia.vencimento + " €, o filho é o/a "+ familia.filho1.nome9" e tem "+família.filho1.idade+" anos");
+********************************************************************************************
+Encapsulamento - esconder informação de uma classe usa-se a palavra reservada 'var' ao inves do 'this'.
+
+EXEMPLO:
+
+function Aquecedor(temperatura){
+	//variaveis privadas (encapsulamento)
+	var temperaturaMaxPermitida = 40;
+	var temperaturaMedia = 25;
+	//se a temperatura  variar entre 1 e 40
+	if(temperatura > 0 && temperatura <= temperaturaMaxPermitida){
+		this.temperatura = temperatura;
+	}else{
+		//se for inferior a 1 ou superior a 40, definimos a temperaturaMedia
+		this.temperatura = temperaturaMedia;
+	}
+	this.ligado = false;
+	//metedo, definido pelo literal de função
+	this.ligar = function(){
+		this.ligado = true;
+	}
+}
+var aquecer = new Aquecedor(12);
+document.write("<br />"+aquecedor.temperaturaMaxPermitida); //undfined, uma vez que o var torna o atributo privado
+
+******************************************************************************************
+Herança - o objeto herda ações e estados.
+EXEMPLO:
+
+function Pessoa(){
+	this.nome="Sem Nome";
+	this.temFilhos = false;
+	this.criarFilhos = function(){
+		this.temFilhos = true;
+	}
+	this.retirarFilhos = function(){
+		this.temFilhos = false;
+	}
+}
+
+function Aluno(nota){
+	var notaMaxExame = 20;
+	var notaMinExame = 7;
+	var vaiExame = false;
+	
+	if(nota >= 7 && nota <= notaMaxExame){
+		this.vaiExame = false;
+	}else{
+		this.vaiExame = true;
+	}
+}
+Aluno.prototype = new Pessoa(); //herança
+var aluno = new Aluno(6);
+document.write("<br />"+aluno.vaiExame);
+document.write("<br />"+aluno.notaMinExame);
+document.write("<br />"+aluno.notaMaxExame);
+aluno.criarFilhos();
+document.write("<br />"+aluno.temFilhos);
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

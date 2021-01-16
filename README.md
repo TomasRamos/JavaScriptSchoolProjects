@@ -1,2 +1,2 @@
-# JavaScriptSchoolProjects
-My JavaScript school projects
+# JavaScriptProjectsSchool
+My school JavaScript projects
